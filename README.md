@@ -21,7 +21,7 @@ Logdy improves productivity by recording the output of the processes, whether th
 Simple command:
 
 ```
-docker run -d -p 8080:8080 -p 10800:10800 rickraven/logdy:0.14.0
+docker run -d -p 8080:8080 -p 10800:10800 rickraven/logdy:0.16.0
 ```
 
 Then you can visit `http://localhost:8080/` in your browser. By default logdy in this image works in [socket mode](https://logdy.dev/docs/explanation/command-modes#socket) so you mas send logs for 10800 port. Example of simple `fluent-bit` log pipeline with output to logdy:
@@ -46,7 +46,7 @@ pipeline:
 You may run container for log files following:
 
 ```
-docker run -d -p 8080:8080 -v /var/logs:/data -e LOGDY_MODE="follow" -e LOGDY_FOLLOW_FILES="/data/*.log" rickraven/logdy:0.14.0
+docker run -d -p 8080:8080 -v /var/logs:/data -e LOGDY_MODE="follow" -e LOGDY_FOLLOW_FILES="/data/*.log" rickraven/logdy:0.16.0
 ```
 
 Example `docker-compose.yml` for `logdy`:
@@ -56,7 +56,7 @@ version: '3.1'
 
 services:
   logdy:
-    image: rickraven/logdy:0.14.0
+    image: rickraven/logdy:0.16.0
     restart: always
     ports:
       - 8080:8080

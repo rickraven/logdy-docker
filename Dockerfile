@@ -1,8 +1,10 @@
 FROM alpine:3.21
 
-ENV LOGDY_VERSION=0.14.0
+ENV LOGDY_VERSION=0.16.0
+ARG TARGETARCH
+ARG TARGETOS
 
-ADD "https://github.com/logdyhq/logdy-core/releases/download/v${LOGDY_VERSION}/logdy_linux_amd64" /usr/local/bin/logdy
+ADD "https://github.com/logdyhq/logdy-core/releases/download/v${LOGDY_VERSION}/logdy_${TARGETOS}_${TARGETARCH}" /usr/local/bin/logdy
 COPY docker_entrypoint /docker_entrypoint
 
 RUN chmod +x /usr/local/bin/logdy && \
